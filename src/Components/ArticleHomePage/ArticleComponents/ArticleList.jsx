@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { getArticles } from '../../../utils/axios';
-import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 
@@ -11,12 +10,6 @@ function ArticleList() {
     const [articleList, setArticleList] = useState([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState()
-
-    const navigate = useNavigate()
-
-    function clickArticle(article_id) {
-        axios.get
-    }
 
     useEffect(() => {
 
@@ -41,7 +34,7 @@ function ArticleList() {
                     <Link to={{pathname: `/articles/${item.article_id}`}} >
                         <h2>{item.title}</h2>
                     </Link>
-                        <img src={item.article_img_url} />
+                        <img id='articleImage-id' src={item.article_img_url} />
                         <p>{item.author}</p>
                         <p>{item.topic}</p>
                         <p>{item.votes}</p>

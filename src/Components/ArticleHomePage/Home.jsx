@@ -12,9 +12,7 @@ function Home() {
             <ArticleSearch />
             <ArticleList />
         </div>
-        
     )
-    
 }
 
 export default Home

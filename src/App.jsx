@@ -3,7 +3,8 @@ import {   BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './Components/Header'
 import './App.css'
 import Home from './Components/ArticleHomePage/Home';
-import IndividualArticleById from './Components/IndividualArticlePage/ArticleById';
+import ArticleIdPage from './Components/ArticleByIdPage/ArticleIdPage';
+import CommentList from './Components/CommentsPage/CommentList';
 
 function App() {
 
@@ -14,7 +15,8 @@ function App() {
       <Routes >
         <Route path='/articles' element={<Home />} />
         <Route path='/' element={<Home />} />
-        <Route path='/articles/:article_id' element={<IndividualArticleById />} />
+        <Route path='/articles/:article_id' element={<ArticleIdPage />} />
+        <Route path='/articles/:article_id/comments' element={<CommentList />} />
       </Routes>
       </Router>
     </div>

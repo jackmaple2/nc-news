@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { getArticleById } from '../../utils/axios';
+import { getArticleById } from '../../../utils/axios';
+import { Link } from 'react-router-dom';
 
 function IndividualArticleById() {
 
@@ -24,17 +25,26 @@ function IndividualArticleById() {
 
     }, [article_id])
 
+    if (loading) {
+        return <h1>Loading...</h1>;
+    }
+    
+
     return (
         <div className="articleById-div">
             <h2>{article.title}</h2>
-            <img src={article.article_img_url} />
+            <img id='articleIdImage-id' src={article.article_img_url} />
             <h3>Topic: {article.topic}</h3>
             <h3>by {article.author}</h3>
             <p>{article.body}</p>
             <p>written {article.created_at}</p>
-
+            <br/>
+            <Link to={{pathname: `/articles/${article.article_id}/comments`}}>
+                <button>View Comments</button>
+            </Link>
         </div>
     )
+
 }
 
 export default IndividualArticleById

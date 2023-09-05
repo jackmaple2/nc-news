@@ -7,9 +7,6 @@ export async function getArticles() {
     .then((response) => {
         return response.data.articles
     })
-    .catch((error) => {
-
-    })
 }
 
 export async function getArticleById(article_id) {
@@ -17,7 +14,11 @@ export async function getArticleById(article_id) {
     .then((response) => {
         return response.data.article
     })
-    .catch((error) => {
+}
 
+export async function getCommentsById(article_id) {
+    return api.get(`/api/articles/${article_id}/comments`)
+    .then((response) => {
+        return response.data.comments
     })
 }
