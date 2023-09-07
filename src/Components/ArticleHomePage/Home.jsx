@@ -5,12 +5,11 @@ import ArticleSearch from "./ArticleComponents/ArticleSearch";
 function Home() {
 
     const [search, setSearch] = useState('')
-    const [topics, setTopics] = useState('')
 
     return (
         <div>
-            <ArticleSearch />
-            <ArticleList />
+            <ArticleSearch setSearch={setSearch}/>
+            <ArticleList search={search}/>
         </div>
     )
 }

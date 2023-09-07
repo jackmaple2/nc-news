@@ -1,16 +1,23 @@
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { getArticleById } from '../../../utils/axios';
+import { getArticleById,
+    // updateArticlesById 
+} from '../../../utils/axios';
+import Votes from './Votes';
 import { Link } from 'react-router-dom';
+
 
 function IndividualArticleById() {
 
     const [article, setArticle] = useState([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(false)
+    const [votes, setVotes] = useState(0)
 
     const {article_id} = useParams()
+
+    
 
     useEffect(() => {
 
