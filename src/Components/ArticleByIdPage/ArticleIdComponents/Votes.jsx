@@ -1,4 +1,4 @@
-import react, {useState, useEffect} from 'react'
+import {useState} from 'react'
 import { updateVote } from '../../../utils/axios'
 import {useParams} from 'react-router-dom'
 
@@ -11,6 +11,10 @@ function Votes({passedVote}) {
     function handleVote(typeOfVote) {
         setLoading(true)
         setError(false)
+        
+        setVotes((currentCount) => {
+            'voteUp' ? (currentCount + 1) : (currentCount - 1)
+        })
 
         updateVote(article_id, typeOfVote) 
             .then((updatedVotes) => {

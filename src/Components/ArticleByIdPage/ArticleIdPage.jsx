@@ -3,13 +3,9 @@ import Votes from "./ArticleIdComponents/Votes"
 
 function ArticleIdPage() {
 
-    
-
-
     return (
         <div>
             <IndividualArticleById />
-            <Votes />
         </div>
     )
 }

@@ -1,14 +1,15 @@
-import { useState } from 'react';
-import { useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 
-
-import { getCommentsById } from "../../utils/axios"
+import { getCommentsById } from "../../../../utils/axios"
+import AddComment from './AddComment';
+import { UserContext } from '../../../UserPage/UserContext';
 
 
 function CommentList() {
 
     const [comments, setComments] = useState([])
+    const {username, setUsername} = useContext(UserContext)
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(false)
 
@@ -30,10 +31,22 @@ function CommentList() {
     if (loading) {
         return <h1>Loading...</h1>;
     }
+
+    function updateComments(additionalComment) {
+        setComments((currentComments) => {
+            return [additionalComment, ...currentComments]
+        })
+    }
     
 
     return (
         <div className='commentsById-div'>
+            <AddComment 
+                updateComments={(comment) => {
+                    updateComments(comment)
+                }}
+                id={article_id}
+                username={username} />
             {comments.map((comment) => {
                 return <div key={comment.comment_id} className='commentsCard-div'>
                     <p>{comment.body}</p>

@@ -1,16 +1,6 @@
 import { useState, useEffect } from "react"
-import axios from 'axios';
-import { getArticles } from "../../../utils/axios";
-
-
 
 function ArticleSearch(setSearch) {
-
-
-    // function onChange(event) {
-    //     setSearch(event.target.value)
-    //     console.log(value)
-    // }
 
     function onSearch() {
         const searchDocument = document.getElementById('searchArticles')
@@ -28,6 +18,3 @@ function ArticleSearch(setSearch) {
 }
 
 export default ArticleSearch
-
-
-// value={search} onChange={onChange} 

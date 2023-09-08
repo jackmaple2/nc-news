@@ -4,7 +4,8 @@ import Header from './Components/Header'
 import './App.css'
 import Home from './Components/ArticleHomePage/Home';
 import ArticleIdPage from './Components/ArticleByIdPage/ArticleIdPage';
-import CommentList from './Components/CommentsPage/CommentList';
+import CommentsPage from './Components/CommentsPage/CommentsPage';
+import User from './Components/UserPage/User';
 
 function App() {
 
@@ -16,7 +17,8 @@ function App() {
         <Route path='/articles' element={<Home />} />
         <Route path='/' element={<Home />} />
         <Route path='/articles/:article_id' element={<ArticleIdPage />} />
-        <Route path='/articles/:article_id/comments' element={<CommentList />} />
+        <Route path='/articles/:article_id/comments' element={<CommentsPage />} />
+        <Route path='/users' element={<User />} />
       </Routes>
       </Router>
     </div>

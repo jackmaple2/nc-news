@@ -1,11 +1,9 @@
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { getArticleById,
-    // updateArticlesById 
-} from '../../../utils/axios';
-import Votes from './Votes';
+import { getArticleById} from '../../../utils/axios';
 import { Link } from 'react-router-dom';
+import Votes from './Votes';
 
 
 function IndividualArticleById() {
@@ -13,11 +11,9 @@ function IndividualArticleById() {
     const [article, setArticle] = useState([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(false)
-    const [votes, setVotes] = useState(0)
 
     const {article_id} = useParams()
 
-    
 
     useEffect(() => {
 
@@ -45,10 +41,12 @@ function IndividualArticleById() {
             <h3>by {article.author}</h3>
             <p>{article.body}</p>
             <p>written {article.created_at}</p>
+            <Votes passedVote={article.votes} />
             <br/>
             <Link to={{pathname: `/articles/${article.article_id}/comments`}}>
                 <button>View Comments</button>
             </Link>
+            <br/>
         </div>
     )
 

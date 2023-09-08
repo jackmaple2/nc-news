@@ -2,19 +2,14 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { getArticles } from '../../../utils/axios';
 import { Link } from 'react-router-dom';
-import Votes from '../../ArticleByIdPage/ArticleIdComponents/Votes';
 
 
-function ArticleList(search) {
+function ArticleList({search}) {
 
     
     const [articleList, setArticleList] = useState([])
     const [loading, setLoading] = useState(true)
-    const [error, setError] = useState()
-    const [votes, setVotes] = useState(0)
-
-
-    
+    const [error, setError] = useState()   
 
     useEffect(() => {
 
@@ -42,7 +37,6 @@ function ArticleList(search) {
                         <img id='articleImage-id' src={item.article_img_url} />
                         <p>by {item.author}</p>
                         <p>Topic: {item.topic}</p>
-                        {/* <Votes passedVote={article.votes} /> */}
                 </div>
             })}
         </div>
