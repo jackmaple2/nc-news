@@ -6,6 +6,8 @@ import Home from './Components/ArticleHomePage/Home';
 import ArticleIdPage from './Components/ArticleByIdPage/ArticleIdPage';
 import CommentsPage from './Components/CommentsPage/CommentsPage';
 import User from './Components/UserPage/User';
+import Topics from './Components/TopicsPage/Topics';
+import ArticlesByTopic from './Components/TopicsPage/ArticlesByTopic';
 
 function App() {
 
@@ -19,6 +21,8 @@ function App() {
         <Route path='/articles/:article_id' element={<ArticleIdPage />} />
         <Route path='/articles/:article_id/comments' element={<CommentsPage />} />
         <Route path='/users' element={<User />} />
+        <Route path='/topics' element={<Topics />} />
+        <Route path='/topics/:topic' element={<ArticlesByTopic />} />
       </Routes>
       </Router>
     </div>

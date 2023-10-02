@@ -1,8 +1,9 @@
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This front end project mimics the frontend user experience of news application which allows the user to:
+    • View and interact with articles and their comments
+    • Vote up and down on comments and articles
+    • Add and delete comments
+    • Create an account and login
+    • Search articles by their topics
+The following languages were used to build this project:JavaScript, React, HTML5 and CSS.

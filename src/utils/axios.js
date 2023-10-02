@@ -2,12 +2,15 @@ import axios from 'axios';
 
 const api = axios.create({baseURL: 'https://jacks-api.onrender.com'})
 
-export function getArticles() {
-    return api.get('/api/articles')
+export function getArticles(topic) {
+    const params = {topic}
+    return api.get('/api/articles', {params})
     .then((response) => {
+        console.log(response.data.articles)
         return response.data.articles
     })
 }
+
 
 export function getArticleById(article_id) {
     return api.get(`/api/articles/${article_id}`)
@@ -52,4 +55,11 @@ export function getUsers() {
 
 export function logIn(username) {
     return api.get(`/api/users/${username}`)
+}
+
+export function getTopics() {
+    return api.get('/api/topics')
+    .then((response) => {
+        return response.data.topics
+    })
 }

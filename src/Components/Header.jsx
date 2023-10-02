@@ -14,6 +14,11 @@ function Header() {
                     Home
                 </button>
             </Link>
+            <Link to='/topics' className='topicsButton-class'>
+                <button>
+                    Topics
+                </button>
+            </Link>
         </div>
         
     )

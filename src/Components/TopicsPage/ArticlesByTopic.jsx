@@ -1,26 +1,33 @@
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { getArticles } from '../../../utils/axios';
-import { Link, useSearchParams } from 'react-router-dom';
+import { getArticles } from '../../utils/axios';
+import { Link, useSearchParams, useParams } from 'react-router-dom';
 
 
-function ArticleList({search}) {
+function ArticlesByTopic() {
 
-    const [articleList, setArticleList] = useState([])
+    const [articleByTopicList, setArticleByTopicList] = useState([])
     const [loading, setLoading] = useState(true)
-    const [error, setError] = useState()   
+    const [error, setError] = useState()
+    const [searchParams, setSearchParams] = useSearchParams()
+
+    const {topic} = useParams()
 
     useEffect(() => {
 
         setLoading(true)
         setError(false)
-        
-        getArticles()
+
+        getArticles(topic)
         .then((data) => {
-            setArticleList(data)
+            console.log(data)
+            data.map((item, index) => {
+                console.log(item)
+            })
+            articleByTopicList(data)
             setLoading(false)
         })
-    }, [])
+    }, [topic, searchParams])
 
     if (loading) {
         return <h1>Loading...</h1>;
@@ -42,4 +49,4 @@ function ArticleList({search}) {
     )
 }
 
-export default ArticleList
+export default ArticlesByTopic
