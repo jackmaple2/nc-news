@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { getCommentsById } from "../../../../utils/axios"
 import AddComment from './AddComment';
 import { UserContext } from '../../../UserPage/UserContext';
-
+import { deleteCommentsById } from '../../../../utils/axios'
 
 function CommentList() {
 
@@ -12,8 +12,10 @@ function CommentList() {
     const {username, setUsername} = useContext(UserContext)
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(false)
+    const [deletedComments, setDeletedComments] = useState([])
 
-    const {article_id} = useParams()
+
+    const {article_id, comment_id} = useParams()
 
     useEffect(() => {
 
@@ -38,6 +40,17 @@ function CommentList() {
         })
     }
     
+    function handleDeleteComment(comment_id) {
+
+        deleteCommentsById(comment_id)
+        .then(() => {
+            setDeletedComments([...deletedComments, comment_id]);
+            console.log('Your comment has been deleted');
+        })
+        .catch((error) => {
+            console.error('Error deleting comment:', error);
+          });
+    }
 
     return (
         <div className='commentsById-div'>
@@ -48,18 +61,24 @@ function CommentList() {
                 id={article_id}
                 username={username} />
             {comments.map((comment) => {
-                return <div key={comment.comment_id} className='commentsCard-div'>
-                    <p>{comment.body}</p>
-                    <p>By {comment.author}</p>
-                    <p>Commented {comment.created_at}</p>
-                    <p>Votes: {comment.votes}</p>
-                    <br/>
-                </div>
-            })}
+        return (
+          !comment.isDeleted && (
+            <div key={comment.comment_id} className='commentsCard-div'>
+              <p>{comment.body}</p>
+              <p>By {comment.author}</p>
+              <p>Commented {comment.created_at}</p>
+              <p>Votes: {comment.votes}</p>
+              <button onClick={() => handleDeleteComment(comment.comment_id)}>
+                Delete Comment
+              </button>
+              <br />
+              <br />
+            </div>
+          )
+        );
+      })}
         </div>
     )
-
-
 }
 
 export default CommentList
