@@ -63,3 +63,10 @@ export function getTopics() {
         return response.data.topics
     })
 }
+
+export function deleteCommentsById(comment_id) {
+    return api.delete(`/api/comments/${comment_id}`)
+    // .then((response) => {
+    //     return response.send('Your comment has been deleted');
+    // })
+}

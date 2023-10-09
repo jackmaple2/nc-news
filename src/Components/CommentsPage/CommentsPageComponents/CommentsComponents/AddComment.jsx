@@ -3,7 +3,6 @@ import { postCommentsById } from '../../../../utils/axios';
 import { UserContext } from '../../../UserPage/UserContext';
 import { useParams } from 'react-router-dom';
 
-
 function AddComment({ updateComments }) {
 
     const [showCommentInput, setShowCommentInput] = useState(false)
@@ -11,9 +10,6 @@ function AddComment({ updateComments }) {
     const {username, setUsername} = useContext(UserContext)
 
     const {article_id} = useParams()
-
-
-    console.log(article_id)
 
     function handleAddCommentClick() {
         setShowCommentInput(true)
