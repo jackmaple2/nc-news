@@ -62,7 +62,6 @@ function CommentList() {
                 username={username} />
             {comments.map((comment) => {
         return (
-          // Conditionally render the comment if it's not in the list of deleted comments
           !comment.isDeleted && (
             <div key={comment.comment_id} className='commentsCard-div'>
               <p>{comment.body}</p>
